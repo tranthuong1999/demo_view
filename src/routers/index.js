@@ -1,36 +1,42 @@
-import { createWebHistory, createRouter } from 'vue-router'
-// @ts-ignore
-import HomeView from '../components/HomeView.vue';
-// @ts-ignore
-import AboutView from '../components/AboutView.vue';
-// @ts-ignore
-import TestView from '../components/TestPage.vue';
-// @ts-ignore
-import NotFound from '../components/NotFound.vue';
-
+import { createWebHistory, createRouter } from 'vue-router';
+import HomePage from "../views/HomePage.vue";
+import EventPage from "../views/EventPage.vue";
+import CoursePage from "../views/CoursePage.vue";
+import InforPage from "../views/InforPage.vue";
+import FooterPage from "../views/FooterPage.vue";
+import CategoryPage from "../views/CategoryPage.vue";
+import NotFoundPage from "../views/NotFoundPage.vue";
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
         {
             path: '/',
-            components: {
-                default: HomeView,
-                a: AboutView,
-                b: TestView,
-            },
+            component: HomePage,
         },
         {
-            path: '/other',
-            components: {
-                default: TestView,
-                a: NotFound,
-            },
+            path: '/thongtin',
+            component: {
+                defaults: InforPage,
+                footer: FooterPage
+            }
         },
         {
-            path: '/about',
-            components: AboutView
+            path: '/khoahoc',
+            component: CoursePage
         },
+        {
+            path: '/sukien',
+            component: EventPage
+        },
+        {
+            path: '/danhmuckhoahoc/:name',
+            component: CategoryPage
+        },
+        {
+            path: '/:pathMatch(.*)*',
+            component: NotFoundPage
+        }
     ],
 })
 
