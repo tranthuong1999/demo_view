@@ -2,17 +2,17 @@
 import { ref } from "vue";
 
 const data_category = ref([
-  { path: "/danhmuckhoahoc/BackEnd", title: "Lập trình backend" },
-  { path: "/danhmuckhoahoc/Design", title: "Thiết kế web" },
-  { path: "/danhmuckhoahoc/DiDong", title: "Lập trình di động" },
-  { path: "/danhmuckhoahoc/FrontEnd", title: "Lập trình front end" },
-  { path: "/danhmuckhoahoc/FullStack", title: "Lập trình full stack" },
-  { path: "/danhmuckhoahoc/TuDuy", title: "Tư duy lập trình" },
+  { path: "danhmuckhoahoc/BackEnd", title: "Lập trình backend" },
+  { path: "danhmuckhoahoc/Design", title: "Thiết kế web" },
+  { path: "danhmuckhoahoc/DiDong", title: "Lập trình di động" },
+  { path: "danhmuckhoahoc/FrontEnd", title: "Lập trình front end" },
+  { path: "danhmuckhoahoc/FullStack", title: "Lập trình full stack" },
+  { path: "danhmuckhoahoc/TuDuy", title: "Tư duy lập trình" },
 ]);
 const data_event = ref([
-  { path: "/sukien/lastYear", title: "Sự kiện sale cuối năm" },
-  { path: "/sukien/Noel", title: "Sự kiện giáng sinh" },
-  { path: "/sukien/Noel", title: "Sự kiện Noel" },
+  { path: "sukien/lastYear", title: "Sự kiện sale cuối năm" },
+  { path: "sukien/Noel", title: "Sự kiện giáng sinh" },
+  { path: "sukien/Noel", title: "Sự kiện Noel" },
 ]);
 </script>
 <template>
@@ -27,11 +27,12 @@ const data_event = ref([
         title="Danh mục"
         :data="data_category"
         icon="density_medium"
+        path="trangchu"
       />
-      <MenuComponent title="Khoá học " />
-      <MenuComponent title="Blog" />
-      <MenuComponent title="Sự kiện" :data="data_event" />
-      <MenuComponent title="Thông tin" />
+      <MenuComponent title="Khoá học " path="khoahoc" />
+      <MenuComponent title="Blog" path="blog" />
+      <MenuComponent title="Sự kiện" :data="data_event" path="sukien" />
+      <MenuComponent title="Thông tin" path="thongtin" />
     </div>
 
     <div class="block_3">
@@ -39,7 +40,6 @@ const data_event = ref([
     </div>
   </div>
 </template>
-
 
 <style scoped lang="scss">
 .nav_bar {

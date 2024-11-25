@@ -1,5 +1,5 @@
 <template>
   <div>
-    <h1>Category Page</h1>
+    <h1>Category Page {{ $route.params.name }}</h1>
   </div>
 </template>
