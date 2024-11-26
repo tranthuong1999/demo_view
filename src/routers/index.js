@@ -11,6 +11,8 @@ import CourseDescriptionPage from "../views/CourseDescriptionPage.vue";
 import ResponsivePage from "../views/ResponsivePage.vue";
 import CounterPage from "../views/CounterPage.vue";
 import MentorPage from "../views/MentorPage.vue";
+import SloganPage from "../views/SloganPage.vue";
+
 
 const router = createRouter({
     history: createWebHistory(),
@@ -19,6 +21,7 @@ const router = createRouter({
             path: '/',
             components: {
                 default: HomePage,
+                slogan: SloganPage,
                 courseDesc: CourseDescriptionPage,
                 footer: FooterPage,
                 counter: CounterPage,

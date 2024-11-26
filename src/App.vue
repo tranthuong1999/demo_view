@@ -1,6 +1,7 @@
 <template>
   <div>
     <router-view></router-view>
+    <router-view name="slogan"></router-view>
     <router-view name="courseDesc"></router-view>
     <router-view name="counter"></router-view>
     <router-view name="mentor"></router-view>
