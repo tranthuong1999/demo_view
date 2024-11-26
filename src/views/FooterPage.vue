@@ -178,6 +178,8 @@ import { isMobile } from "../Composables/useScreenBreakpoints";
       display: flex;
       justify-content: space-evenly;
       &.block_2_mobile {
+        // display: grid;
+        // grid-template-columns: repeat(2, 1fr);
         flex-direction: column;
         gap: 12px;
       }

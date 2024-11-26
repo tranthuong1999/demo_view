@@ -2,6 +2,8 @@
   <div>
     <router-view></router-view>
     <router-view name="courseDesc"></router-view>
+    <router-view name="counter"></router-view>
+    <router-view name="mentor"></router-view>
     <router-view name="footer"></router-view>
   </div>
 </template>

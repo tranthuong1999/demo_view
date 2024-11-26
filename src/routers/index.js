@@ -9,7 +9,8 @@ import NotFoundPage from "../views/NotFoundPage.vue";
 import BlogPage from "../views/BlogPage.vue";
 import CourseDescriptionPage from "../views/CourseDescriptionPage.vue";
 import ResponsivePage from "../views/ResponsivePage.vue";
-
+import CounterPage from "../views/CounterPage.vue";
+import MentorPage from "../views/MentorPage.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -20,6 +21,9 @@ const router = createRouter({
                 default: HomePage,
                 courseDesc: CourseDescriptionPage,
                 footer: FooterPage,
+                counter: CounterPage,
+                mentor: MentorPage,
+
             },
         },
         {
