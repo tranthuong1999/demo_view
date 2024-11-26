@@ -10,7 +10,7 @@ import '@mdi/font/css/materialdesignicons.css';
 import router from "./routers";
 import "../src/styles/index.css"
 import MenuComponent from "./components/MenuComponent.vue";
-
+import breakpointsPlugin from "./plugins/breakpoints";
 
 const vuetify = createVuetify({
     components,
@@ -25,7 +25,7 @@ const app = createApp(App);
 app.use(router)
 app.use(vuetify);
 app.use(pinia);
-
+app.use(breakpointsPlugin);
 app.component('MenuComponent', MenuComponent);
 
 

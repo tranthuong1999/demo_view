@@ -1,4 +1,5 @@
 <script setup>
+import { isMobile } from "../Composables/useScreenBreakpoints";
 const data_course = [
   "Hơn 1000 bài tập và dự án thực tế",
   "Công nghệ cập nhật mới nhất",
@@ -31,7 +32,7 @@ const data_certificate = [
 
 <template>
   <div class="course-description">
-    <div class="course">
+    <div class="course" :class="{ course_mobile: isMobile }">
       <div class="block-1">
         <h1 class="title">Khóa học</h1>
         <p class="desc_course">
@@ -103,11 +104,16 @@ const data_certificate = [
 
 <style scoped lang="scss">
 .course-description {
+  padding: 0 50px;
   .course {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     color: var(--colorWhite);
+    &_mobile {
+      display: flex !important;
+      flex-direction: column !important;
+    }
     .title {
       text-transform: uppercase;
       font-weight: 500;
@@ -131,6 +137,11 @@ const data_certificate = [
       background-color: var(--colorGlobal);
       grid-row: 1/3;
       padding: 12px;
+      border-radius: 4px;
+      background-image: url(../assets/robot.png);
+      background-position: 100% 100%;
+      background-size: 50%;
+      background-repeat: no-repeat;
       .desc_course {
         max-width: 447px;
         font-weight: 300;
@@ -146,6 +157,7 @@ const data_certificate = [
     .block-4,
     .block-5 {
       padding: 12px;
+      border-radius: 4px;
     }
     .block-2 {
       background-color: #f6ba35;

@@ -43,7 +43,7 @@ const handleItemRouter = (path) => {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: var(--colorGlobal) !important;
+  background: rgb(117, 184, 177) !important;
   .custom-title {
     font-size: 15px !important;
     color: var(--colorText);

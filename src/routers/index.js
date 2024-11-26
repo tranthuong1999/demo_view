@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter } from 'vue-router';
 import HomePage from "../views/HomePage.vue";
 import EventPage from "../views/EventPage.vue";
-// import CoursePage from "../views/CoursePage.vue";
+import CoursePage from "../views/CoursePage.vue";
 import InforPage from "../views/InforPage.vue";
 import FooterPage from "../views/FooterPage.vue";
 import CategoryPage from "../views/CategoryPage.vue";
@@ -16,7 +16,11 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            component: HomePage,
+            components: {
+                default: HomePage,
+                courseDesc: CourseDescriptionPage,
+                footer: FooterPage,
+            },
         },
         {
             path: '/trangchu',
@@ -28,7 +32,7 @@ const router = createRouter({
         },
         {
             path: '/khoahoc',
-            component: CourseDescriptionPage
+            component: CoursePage
         },
         {
             path: '/blog',

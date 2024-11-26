@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-
+const isFocus = ref(false);
 const data_category = ref([
   { path: "danhmuckhoahoc/BackEnd", title: "Lập trình backend" },
   { path: "danhmuckhoahoc/Design", title: "Thiết kế web" },
@@ -14,12 +14,19 @@ const data_event = ref([
   { path: "sukien/Noel", title: "Sự kiện giáng sinh" },
   { path: "sukien/Noel", title: "Sự kiện Noel" },
 ]);
+
 </script>
 <template>
   <div class="nav_bar">
     <div class="block_1">
       <img src="../assets/logo.png" alt="logo" />
-      <input placeholder="search" class="input_search" />
+      <input
+        placeholder="Tìm kiếm"
+        class="input_search"
+        @focus="isFocus = true"
+        @blur="isFocus = false"
+        :class="{ 'focused-search': isFocus }"
+      />
     </div>
 
     <div class="block_2">
@@ -56,6 +63,24 @@ const data_event = ref([
       width: 250px;
       height: 96px;
       object-fit: contain;
+    }
+    .input_search {
+      outline: none;
+      border: none;
+      width: 100%;
+      height: 40px;
+      border-radius: 8px;
+      padding-left: 10px;
+      margin-left: 15px;
+      background-image: url(../assets/icon_search.png);
+      background-size: 30px;
+      background-position: 100%;
+      background-repeat: no-repeat;
+      background-color: #f5f5f5;
+    }
+    .focused-search {
+      border: 2px solid var(--colorGlobal);
+      outline: none;
     }
   }
   .block_2 {
