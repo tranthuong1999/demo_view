@@ -1,5 +1,6 @@
 <script setup>
 import CountUp from "vue-countup-v3";
+import { isMobile, isTablet } from "../Composables/useScreenBreakpoints";
 
 const data = [
   {
@@ -27,7 +28,10 @@ const data = [
 
 <template>
   <div class="counter_page">
-    <div class="list_counter">
+    <div
+      class="list_counter"
+      :class="{ list_counter_mobile: isMobile, list_counter_tabnet: isTablet }"
+    >
       <div v-for="item in data" :key="item.number" class="item_counter">
         <div class="image">
           <img :src="item.image" alt="" />
@@ -49,6 +53,15 @@ const data = [
   .list_counter {
     display: flex;
     justify-content: space-around;
+    &_mobile {
+      flex-direction: column;
+      gap: 20px;
+    }
+    &_tabnet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
     .item_counter {
       display: flex;
       flex-direction: column;
