@@ -12,26 +12,32 @@ import ResponsivePage from "../views/ResponsivePage.vue";
 import CounterPage from "../views/CounterPage.vue";
 import MentorPage from "../views/MentorPage.vue";
 import SloganPage from "../views/SloganPage.vue";
+import CoursePopularPage from "../views/CoursePopularPage.vue";
+import CourseReferencePage from "../views/CourseReferencePage.vue";
 
+
+
+const home_page = {
+    default: HomePage,
+    slogan: SloganPage,
+    courseDesc: CourseDescriptionPage,
+    footer: FooterPage,
+    counter: CounterPage,
+    mentor: MentorPage,
+    course_popular: CoursePopularPage,
+    course_reference: CourseReferencePage,
+}
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
         {
             path: '/',
-            components: {
-                default: HomePage,
-                slogan: SloganPage,
-                courseDesc: CourseDescriptionPage,
-                footer: FooterPage,
-                counter: CounterPage,
-                mentor: MentorPage,
-
-            },
+            components: home_page
         },
         {
             path: '/trangchu',
-            component: HomePage,
+            component: home_page,
         },
         {
             path: '/thongtin',

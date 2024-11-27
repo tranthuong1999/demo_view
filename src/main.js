@@ -11,6 +11,9 @@ import router from "./routers";
 import "../src/styles/index.css"
 import MenuComponent from "./components/MenuComponent.vue";
 import breakpointsPlugin from "./plugins/breakpoints";
+import CoursePopularComponent from "./components/CoursePopularComponent.vue";
+import CourseReferenceComponent from "./components/CouseReferenceComponent.vue";
+
 
 const vuetify = createVuetify({
     components,
@@ -27,6 +30,10 @@ app.use(vuetify);
 app.use(pinia);
 app.use(breakpointsPlugin);
 app.component('MenuComponent', MenuComponent);
+app.component('CoursePopularComponent', CoursePopularComponent);
+app.component('CourseReferenceComponent', CourseReferenceComponent);
+
+
 
 
 app.mount('#app')

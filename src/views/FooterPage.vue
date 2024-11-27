@@ -28,7 +28,7 @@ import { isMobile } from "../Composables/useScreenBreakpoints";
         </div>
         <div class="block-1-item">
           <div class="icon-lg">
-            <i class="material-icons" :class="icon_arrow">add_locations</i>
+          <i class="material-icons" :class="icon_arrow">add_locations</i>
           </div>
           <div class="desc">Đà Nẵng</div>
         </div>
