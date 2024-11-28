@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from "vue";
+import { isMobile } from "../Composables/useScreenBreakpoints";
+
 const isFocus = ref(false);
 const data_category = ref([
   { path: "danhmuckhoahoc/BackEnd", title: "Lập trình backend" },
@@ -14,13 +16,13 @@ const data_event = ref([
   { path: "sukien/Noel", title: "Sự kiện giáng sinh" },
   { path: "sukien/Noel", title: "Sự kiện Noel" },
 ]);
-
 </script>
 <template>
   <div class="nav_bar">
     <div class="block_1">
       <img src="../assets/logo.png" alt="logo" />
       <input
+        v-if="!isMobile"
         placeholder="Tìm kiếm"
         class="input_search"
         @focus="isFocus = true"
@@ -29,7 +31,7 @@ const data_event = ref([
       />
     </div>
 
-    <div class="block_2">
+    <div class="block_2" v-if="!isMobile">
       <MenuComponent
         title="Danh mục"
         :data="data_category"
@@ -44,6 +46,9 @@ const data_event = ref([
 
     <div class="block_3">
       <button class="btn-login">Đăng nhập</button>
+      <i v-if="isMobile" class="material-icons" :class="'icon_drop_down'"
+        >arrow_drop_down</i
+      >
     </div>
   </div>
 </template>
@@ -88,6 +93,9 @@ const data_event = ref([
     gap: 24px;
   }
   .block_3 {
+    display: flex;
+    gap: 6px;
+    align-items: center;
     .btn-login {
       padding: 5px 10px;
       background-color: var(--colorSPrimary);
@@ -97,6 +105,13 @@ const data_event = ref([
       font-size: 15px;
       border-radius: 8px;
       color: var(--colorWhite);
+    }
+    .icon_drop_down {
+      color: black;
+      font-weight: 900;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

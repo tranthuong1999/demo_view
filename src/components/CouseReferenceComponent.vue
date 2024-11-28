@@ -69,16 +69,122 @@ defineProps(["data"]);
         </div>
         <v-tooltip
           activator="parent"
-          :location="index % 2 === 0 ? 'start' : 'end'"
-          class="content_tooltip"
-          >Tooltip</v-tooltip
+          :location="start"
+          color="green"
+          content-class="custom-tooltip"
+          v-if="!isMobile"
         >
+          <div class="content_tooltip">
+            <div class="img">
+              <img
+                src="https://demo2.cybersoft.edu.vn/static/media/emoji.6d1b7051.png"
+                alt=""
+              />
+              <p class="name_elon_musk_tool">Elun Musk Ricard</p>
+            </div>
+            <h4>BOOTCAMP - LẬP TRÌNH FULL STACK TỪ ZERO ĐẾN CÓ VIỆC</h4>
+            <p class="desc_course">
+              Đã có hơn 6200 bạn đăng kí học và có việc làm thông qua chương
+              trình đào tạo Bootcamp Lập trình Front End chuyên nghiệp. Khóa học
+              100% thực hành cường độ cao theo dự án thực tế và kết nối doanh
+              nghiệp hỗ trợ tìm việc ngay sau khi học...
+            </p>
+            <div class="time_tool_tip">
+              <div class="time_1">
+                <i class="material-icons" :style="{ color: '#f5c002' }"
+                  >access_time</i
+                >
+                <p>8 giờ</p>
+              </div>
+
+              <div class="time_1">
+                <i class="material-icons" :style="{ color: '#f06f68' }"
+                  >event</i
+                >
+                <p>4 tuần</p>
+              </div>
+
+              <div class="time_1">
+                <i class="material-icons" :style="{ color: '#65c9ff' }"
+                  >bar_chart</i
+                >
+                <p>Tất cả</p>
+              </div>
+            </div>
+
+            <div class="btn">
+              <button class="btn_detail">Xem chi tiết</button>
+            </div>
+          </div>
+        </v-tooltip>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style  lang="scss">
+.custom-tooltip {
+  background: #fff !important;
+  padding: 16px !important;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.2);
+  .name_elon_musk_tool {
+    padding: 16px 0;
+  }
+  .desc_course {
+    color: var(--colorTextCard);
+    font-size: 16px;
+  }
+  .content_tooltip {
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s;
+    width: 350px;
+    color: black;
+    .img {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      img {
+        width: 40px;
+        height: 40px;
+      }
+      p {
+        color: var(--colorTextCard);
+        font-size: 18px;
+      }
+    }
+    .time_tool_tip {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 20px;
+      padding-bottom: 12px;
+      .time_1 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+  }
+  .btn {
+    border: none;
+    transition: all 0.5s;
+    text-transform: uppercase;
+    font-size: 15px;
+    padding: 15px;
+    background-color: var(--colorGlobal);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    border-radius: 4px;
+    .btn_detail {
+      text-transform: uppercase;
+    }
+  }
+}
 .course_ref_component {
   .list_reference {
     display: flex;
@@ -108,6 +214,9 @@ defineProps(["data"]);
       box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.2);
       border-top-right-radius: 12px;
       border-top-left-radius: 12px;
+      &:hover {
+        cursor: pointer;
+      }
       .image {
         img {
           width: 100%;
