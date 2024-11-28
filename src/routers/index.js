@@ -14,6 +14,8 @@ import MentorPage from "../views/MentorPage.vue";
 import SloganPage from "../views/SloganPage.vue";
 import CoursePopularPage from "../views/CoursePopularPage.vue";
 import CourseReferencePage from "../views/CourseReferencePage.vue";
+import CourseFontEndPage from "../views/CourseFontEndPage.vue";
+
 
 
 
@@ -26,6 +28,8 @@ const home_page = {
     mentor: MentorPage,
     course_popular: CoursePopularPage,
     course_reference: CourseReferencePage,
+    course_font_end: CourseFontEndPage,
+
 }
 
 const router = createRouter({

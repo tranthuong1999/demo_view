@@ -9,7 +9,7 @@ const data = ref([
     moTa: "rất hay",
     luotXem: 100,
     hinhAnh:
-      "https://elearningnew.cybersoft.edu.vn/hinhanh/asdasd_gp01.gif",
+      "https://elearningnew.cybersoft.edu.vn/hinhanh/khoa-hoc-python-cho-nguoi-moi-bat-dau_gp01.png",
     maNhom: "gp01",
     ngayTao: "08/10/2024",
     soLuongHocVien: 0,
@@ -31,7 +31,7 @@ const data = ref([
     moTa: "rất hay",
     luotXem: 100,
     hinhAnh:
-      "https://elearningnew.cybersoft.edu.vn/hinhanh/asdasd_gp01.gif",
+      "https://elearningnew.cybersoft.edu.vn/hinhanh/khoa-hoc-python-cho-nguoi-moi-bat-dau_gp01.png",
     maNhom: "gp01",
     ngayTao: "08/10/2024",
     soLuongHocVien: 0,
@@ -53,7 +53,7 @@ const data = ref([
     moTa: "rất hay",
     luotXem: 100,
     hinhAnh:
-      "https://elearningnew.cybersoft.edu.vn/hinhanh/asdasd_gp01.gif",
+      "https://elearningnew.cybersoft.edu.vn/hinhanh/khoa-hoc-python-cho-nguoi-moi-bat-dau_gp01.png",
     maNhom: "gp01",
     ngayTao: "08/10/2024",
     soLuongHocVien: 0,
@@ -75,7 +75,7 @@ const data = ref([
     moTa: "rất hay",
     luotXem: 100,
     hinhAnh:
-      "https://elearningnew.cybersoft.edu.vn/hinhanh/asdasd_gp01.gif",
+      "https://elearningnew.cybersoft.edu.vn/hinhanh/khoa-hoc-python-cho-nguoi-moi-bat-dau_gp01.png",
     maNhom: "gp01",
     ngayTao: "08/10/2024",
     soLuongHocVien: 0,
@@ -98,7 +98,7 @@ const data = ref([
 
 <template>
   <div class="course_reference_page">
-    <h4 class="title">Khóa học tham khảo</h4>
+    <h4 class="title">Khóa học Front End React Js</h4>
     <CourseReferenceComponent :data="data" />
   </div>
 </template>

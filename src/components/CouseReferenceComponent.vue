@@ -18,7 +18,7 @@ defineProps(["data"]);
       <div v-for="(item, index) in data" :key="index" class="item_reference">
         <div class="image">
           <img
-            src="https://elearningnew.cybersoft.edu.vn/hinhanh/asdasd_gp01.gif"
+            :src="item.hinhAnh"
             alt=""
           />
         </div>
@@ -69,7 +69,7 @@ defineProps(["data"]);
         </div>
         <v-tooltip
           activator="parent"
-          :location="start"
+          :location="top"
           color="green"
           content-class="custom-tooltip"
           v-if="!isMobile"
