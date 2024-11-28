@@ -3,6 +3,8 @@ import { ref } from "vue";
 import { isMobile } from "../Composables/useScreenBreakpoints";
 
 const isFocus = ref(false);
+const isMenuMobile = ref(false);
+
 const data_category = ref([
   { path: "danhmuckhoahoc/BackEnd", title: "Lập trình backend" },
   { path: "danhmuckhoahoc/Design", title: "Thiết kế web" },
@@ -46,9 +48,29 @@ const data_event = ref([
 
     <div class="block_3">
       <button class="btn-login">Đăng nhập</button>
-      <i v-if="isMobile" class="material-icons" :class="'icon_drop_down'"
+      <i
+        @click="isMenuMobile = !isMenuMobile"
+        v-if="isMobile"
+        class="material-icons"
+        :class="'icon_drop_down'"
         >arrow_drop_down</i
       >
+    </div>
+
+    <div v-if="isMenuMobile && isMobile" class="menu_mobile">
+      <div class="input_search_mobile">
+        <input placeholder="Tìm kiếm" />
+      </div>
+      <div class="menu_category">
+        <MenuComponent title="Danh mục" :data="data_category" path="trangchu" />
+        <MenuComponent title="Khoá học " path="khoahoc" />
+        <MenuComponent title="Blog" path="blog" />
+        <MenuComponent title="Sự kiện" :data="data_event" path="sukien" />
+        <MenuComponent title="Thông tin" path="thongtin" />
+        <div>
+          <button class="btn_log_out">Đăng xuất</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -60,6 +82,11 @@ const data_event = ref([
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  z-index: 100000;
+  background-color: #fff;
+  box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.15);
+  width: 100%;
   .block_1 {
     display: flex;
     gap: 24px;
@@ -96,6 +123,7 @@ const data_event = ref([
     display: flex;
     gap: 6px;
     align-items: center;
+    position: relative;
     .btn-login {
       padding: 5px 10px;
       background-color: var(--colorSPrimary);
@@ -111,6 +139,49 @@ const data_event = ref([
       font-weight: 900;
       &:hover {
         cursor: pointer;
+      }
+    }
+  }
+  .menu_mobile {
+    width: 200px;
+    height: 300px;
+    position: fixed;
+    animation: fadeInDown 0.5s ease-in;
+    transition: all 0.5s;
+    background-color: rgba(1, 135, 126, 0.8);
+    top: 70px;
+    right: 10px;
+    transform: translateX(0);
+    z-index: 1000;
+    .input_search_mobile {
+      padding: 0 12px;
+      padding-top: 4px;
+      padding-bottom: 12px;
+      input {
+        border: 1px solid var(--colorGlobal);
+        padding: 2px 8px;
+        outline: none;
+        width: 100%;
+        background-color: #fff;
+        border-radius: 4px;
+      }
+    }
+    .menu_category {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 70%;
+      align-items: center;
+      .btn_log_out {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--colorText);
+        transition: all 0.2s;
+        text-transform: uppercase;
+        &:hover {
+          cursor: pointer;
+          color: #fff;
+        }
       }
     }
   }

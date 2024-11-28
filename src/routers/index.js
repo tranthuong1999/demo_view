@@ -15,12 +15,15 @@ import SloganPage from "../views/SloganPage.vue";
 import CoursePopularPage from "../views/CoursePopularPage.vue";
 import CourseReferencePage from "../views/CourseReferencePage.vue";
 import CourseFontEndPage from "../views/CourseFontEndPage.vue";
+import MenuPageCheck from "../views/MenuPageCheck.vue";
+
 
 
 
 
 const home_page = {
     default: HomePage,
+    menu_check: MenuPageCheck,
     slogan: SloganPage,
     courseDesc: CourseDescriptionPage,
     footer: FooterPage,

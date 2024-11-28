@@ -1,17 +1,22 @@
 <template>
   <div class="menu_component">
     <i class="material-icons" v-if="icon && icon.length > 0">{{ icon }}</i>
-    <v-menu open-on-hover>
+    <v-menu open-on-hover activator="parent" :location="end">
       <template v-slot:activator="{ props }">
         <button
-          class="custom-button"
+          class="custom_button"
+          :class="{ custom_button_mobile: isMobile }"
           v-bind="props"
           @click="handleItemRouter(path)"
         >
           {{ title }}
         </button>
       </template>
-      <v-list v-if="data && data.length > 0" class="content-menu">
+      <v-list
+        v-if="data && data.length > 0"
+        class="content_menu"
+        :class="{ content_menu_mobile: isMobile }"
+      >
         <v-list-item v-for="(item, index) in data" :key="index">
           <div class="custom-title" @click="handleCategoryRouter(item.path)">
             {{ item.title }}
@@ -25,6 +30,8 @@
 <script setup>
 import { defineProps } from "vue";
 import { useRouter } from "vue-router";
+import { isMobile } from "../Composables/useScreenBreakpoints";
+
 const router = useRouter();
 defineProps(["title", "data", "icon", "path"]);
 
@@ -38,12 +45,15 @@ const handleItemRouter = (path) => {
 </script>
 
 <style scoped lang='scss'>
-.content-menu {
+.content_menu {
   width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background: rgb(117, 184, 177) !important;
+  &_mobile {
+    background: rgba(1, 135, 126, 0.8) !important;
+  }
   .custom-title {
     font-size: 15px !important;
     color: var(--colorText);
@@ -61,7 +71,7 @@ const handleItemRouter = (path) => {
   display: flex;
   align-items: center;
   gap: 10px;
-  .custom-button {
+  .custom_button {
     font-size: 15px;
     font-weight: 700;
     color: var(--colorText);
@@ -69,6 +79,11 @@ const handleItemRouter = (path) => {
     transition: all 0.2s;
     &:hover {
       color: var(--colorGlobal);
+    }
+    &_mobile {
+      &:hover {
+        color: #fff;
+      }
     }
   }
   .material-icons {
