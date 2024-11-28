@@ -83,7 +83,7 @@ const data_event = ref([
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  z-index: 100000;
+  z-index: 1000;
   background-color: #fff;
   box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.15);
   width: 100%;

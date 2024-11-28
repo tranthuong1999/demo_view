@@ -46,11 +46,13 @@ const handleItemRouter = (path) => {
 
 <style scoped lang='scss'>
 .content_menu {
+  position: relative;
   width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background: rgb(117, 184, 177) !important;
+  z-index: 10000;
   &_mobile {
     background: rgba(1, 135, 126, 0.8) !important;
   }
