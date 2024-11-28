@@ -1,10 +1,20 @@
 <script setup>
 import { defineProps } from "vue";
+import {
+  isMobile,
+  isTablet,
+} from "../Composables/useScreenBreakpoints";
 defineProps(["data"]);
 </script>
 
 <template>
-  <div class="list">
+  <div
+    class="list"
+    :class="{
+      list_mobile: isMobile,
+      list_tabnet: isTablet,
+    }"
+  >
     <div
       v-for="(course, index) in data"
       :key="index"
@@ -44,11 +54,20 @@ defineProps(["data"]);
   display: flex;
   gap: 12px;
   justify-content: space-evenly;
+  padding: 0 50px;
+  &_mobile {
+    display: grid;
+    gap: 20px;
+  }
+  &_tabnet {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
   .course_popular_page {
     position: relative;
     display: flex;
     flex-direction: column;
-    transition: all 0.5s;
+    transition: all 0.4s;
     width: 280px;
     min-width: 280px;
     min-height: 370px;
@@ -58,6 +77,10 @@ defineProps(["data"]);
     border: 1px solid rgba(0, 0, 0, 0.125);
     box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.2);
     border-radius: 12px;
+    &:hover {
+      cursor: pointer;
+      transform: translateY(-2px);
+    }
     .image {
       img {
         width: 100%;

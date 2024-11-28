@@ -106,6 +106,7 @@ const data = ref([
 <style scoped lang="scss">
 .course_reference_page {
   padding: 0 50px;
+  padding-bottom: 50px;
   .title {
     color: #000;
     text-decoration: none;
