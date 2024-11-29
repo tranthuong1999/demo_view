@@ -15,7 +15,7 @@
       <v-list
         v-if="data && data.length > 0"
         class="content_menu"
-        :class="{ content_menu_mobile: isMobile }"
+        :class="{ content_menu_mobile: isMobile}"
       >
         <v-list-item v-for="(item, index) in data" :key="index">
           <div class="custom-title" @click="handleCategoryRouter(item.path)">
@@ -54,7 +54,9 @@ const handleItemRouter = (path) => {
   background: rgb(117, 184, 177) !important;
   z-index: 10000;
   &_mobile {
+    // position: relative;
     background: rgba(1, 135, 126, 0.8) !important;
+    // left: -140px;
   }
   .custom-title {
     font-size: 15px !important;

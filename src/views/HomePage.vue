@@ -1,9 +1,11 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { isMobile } from "../Composables/useScreenBreakpoints";
+import { usePostStore } from "../store/categoryStore";
 
 const isFocus = ref(false);
 const isMenuMobile = ref(false);
+const postStore = usePostStore();
 
 const data_category = ref([
   { path: "danhmuckhoahoc/BackEnd", title: "Lập trình backend" },
@@ -18,6 +20,11 @@ const data_event = ref([
   { path: "sukien/Noel", title: "Sự kiện giáng sinh" },
   { path: "sukien/Noel", title: "Sự kiện Noel" },
 ]);
+
+onMounted(() => {
+  postStore.fetchListCourse();
+  postStore.fetchListCategory();
+});
 </script>
 <template>
   <div class="nav_bar">
@@ -32,7 +39,6 @@ const data_event = ref([
         :class="{ 'focused-search': isFocus }"
       />
     </div>
-
     <div class="block_2" v-if="!isMobile">
       <MenuComponent
         title="Danh mục"
