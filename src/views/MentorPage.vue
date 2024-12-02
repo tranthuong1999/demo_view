@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
-import { isMobile } from "../Composables/useScreenBreakpoints";
+import { isMobile, isTablet } from "../Composables/useScreenBreakpoints";
 const data = ref([
   {
     image: require("../assets/mentor_1.jpg"),
@@ -11,7 +11,7 @@ const data = ref([
   {
     image: require("../assets/mentor_2.jpg"),
     name: "carDi MenBor",
-    title: "Chuyên gia ngôn ngữ Vue Js",
+    title: "Chuyên gia ngôn ngữ",
     expert: "Vue Js",
   },
   {
@@ -23,7 +23,7 @@ const data = ref([
   {
     image: require("../assets/mentor_4.jpg"),
     name: "Chris Andersan",
-    title: "Chuyên gia lĩnh vực Full Skill",
+    title: "Chuyên gia lĩnh vực",
     expert: "Full Skill",
   },
   {
@@ -51,6 +51,12 @@ const isActive = ref(false);
 const startIndex = ref(0);
 
 const visibleMentors = computed(() => {
+  if (isMobile.value) {
+    return data.value.slice(startIndex.value, startIndex.value + 1);
+  }
+  if (isTablet.value) {
+    return data.value.slice(startIndex.value, startIndex.value + 4);
+  }
   return data.value.slice(startIndex.value, startIndex.value + 6);
 });
 
@@ -149,6 +155,7 @@ onMounted(() => {
     .list_mentor {
       display: flex;
       justify-content: space-around;
+      overflow: hidden;
       .item_mentor {
         display: flex;
         flex-direction: column;
@@ -221,6 +228,7 @@ onMounted(() => {
     align-items: center;
     padding-top: 50px;
     position: relative;
+    gap: 24px;
     .triangleTopRight {
       transform: rotate(-45deg);
       position: absolute;
