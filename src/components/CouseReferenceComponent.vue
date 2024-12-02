@@ -17,10 +17,7 @@ defineProps(["data"]);
     >
       <div v-for="(item, index) in data" :key="index" class="item_reference">
         <div class="image">
-          <img
-            :src="item.hinhAnh"
-            alt=""
-          />
+          <img :src="item.hinhAnh" alt="" />
         </div>
         <p class="title">
           Lập trình hiện đang là xu hướng trên toàn thế giới...
@@ -187,11 +184,13 @@ defineProps(["data"]);
 }
 .course_ref_component {
   .list_reference {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0 50px;
+    gap: 24px 0px;
     &_mobile {
       display: grid;
+      grid-template-columns: repeat(1, 1fr);
       gap: 20px;
     }
     &_tabnet {

@@ -49,11 +49,14 @@ defineProps(["data"]);
 <style scoped lang="scss">
 .list {
   display: flex;
-  gap: 12px;
-  justify-content: space-evenly;
-  padding: 0 50px;
+  // justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0 100px;
+  gap: 24px 0px;
   &_mobile {
     display: grid;
+    grid-template-columns: repeat(1, 1fr);
     gap: 20px;
   }
   &_tabnet {
@@ -84,12 +87,12 @@ defineProps(["data"]);
         width: 100%;
         height: 100%;
         height: 240px;
-        object-fit: contain;
+        object-fit: fill;
       }
     }
     .stikerCard {
       position: absolute;
-      top: 47%;
+      top: 50%;
       left: 0;
       display: inline-block;
       position: absolute;

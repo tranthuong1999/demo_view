@@ -1,10 +1,11 @@
 import { defineStore } from 'pinia';
-import { apiGetListCategory, apiFetchListAllCourse } from "../apis/category.api"
+import { apiGetListCategory, apiFetchListAllCourse, apiGetListCourseByPage } from "../apis/category.api"
 
 export const useCategoryStore = defineStore('postStore', {
     state: () => ({
         category: [],
         listCourse: [],
+        listCourseByPage: [],
         loading: false,
         error: null,
     }),
@@ -14,7 +15,7 @@ export const useCategoryStore = defineStore('postStore', {
                 const response = await apiGetListCategory();
                 this.category = response;
             } catch (err) {
-                this.error = 'Failed to fetch posts';
+                this.error = 'Failed to fetchListCategory';
                 console.error(err);
             }
         },
@@ -23,8 +24,20 @@ export const useCategoryStore = defineStore('postStore', {
                 const response = await apiFetchListAllCourse();
                 this.listCourse = response;
             } catch (err) {
-                this.error = 'Failed to fetch posts';
+                this.error = 'Failed to fetchListCourse';
                 console.error(err);
+            }
+        },
+        async fetchListCourseByPage(page) {
+            this.loading = true;
+            try {
+                const response = await apiGetListCourseByPage(page);
+                this.listCourseByPage = response;
+            } catch (err) {
+                this.error = 'Failed to fetchListCourseByPage';
+                console.error(err);
+            } finally {
+                this.loading = false;
             }
         },
     },

@@ -19,10 +19,10 @@ import MenuPageCheck from "../views/MenuPageCheck.vue";
 import { useCategoryStore } from "../store/categoryStore"
 
 const home_page = {
-    default: HomePage,
+    nav_bar: HomePage,
     menu_check: MenuPageCheck,
     slogan: SloganPage,
-    courseDesc: CourseDescriptionPage,
+    course_desc: CourseDescriptionPage,
     footer: FooterPage,
     counter: CounterPage,
     mentor: MentorPage,
@@ -30,6 +30,7 @@ const home_page = {
     course_reference: CourseReferencePage,
     course_font_end: CourseFontEndPage,
 }
+
 const fetchCategoryData = async () => {
     const categoryStore = useCategoryStore();
     await categoryStore.fetchListCourse();
@@ -55,11 +56,19 @@ const router = createRouter({
         },
         {
             path: '/khoahoc',
-            component: CoursePage
+            components: {
+                nav_bar: HomePage,
+                course: CoursePage,
+                footer: FooterPage,
+            }
         },
         {
             path: '/blog',
-            component: BlogPage
+            components: {
+                nav_bar: HomePage,
+                blog: BlogPage,
+                footer: FooterPage,
+            }
         },
         {
             path: '/sukien/:name',
