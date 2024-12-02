@@ -218,9 +218,10 @@ defineProps(["data"]);
         cursor: pointer;
       }
       .image {
+        width: 100%;
         img {
           width: 100%;
-          height: 100%;
+          height: 240px;
           border-radius: 12px;
         }
       }

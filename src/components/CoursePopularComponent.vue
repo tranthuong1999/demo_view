@@ -1,9 +1,6 @@
 <script setup>
 import { defineProps } from "vue";
-import {
-  isMobile,
-  isTablet,
-} from "../Composables/useScreenBreakpoints";
+import { isMobile, isTablet } from "../Composables/useScreenBreakpoints";
 defineProps(["data"]);
 </script>
 
@@ -82,15 +79,17 @@ defineProps(["data"]);
       transform: translateY(-2px);
     }
     .image {
+      width: 100%;
       img {
         width: 100%;
         height: 100%;
-        // object-fit: contain;
+        height: 240px;
+        object-fit: contain;
       }
     }
     .stikerCard {
       position: absolute;
-      top: 50%;
+      top: 47%;
       left: 0;
       display: inline-block;
       position: absolute;

@@ -1,96 +1,14 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
-const data = ref([
-  {
-    maKhoaHoc: "",
-    biDanh: "javascriptt",
-    tenKhoaHoc: "Javascriptt",
-    moTa: "rất hay",
-    luotXem: 100,
-    hinhAnh:
-      "https://elearningnew.cybersoft.edu.vn/hinhanh/khoa-hoc-python-cho-nguoi-moi-bat-dau_gp01.png",
-    maNhom: "gp01",
-    ngayTao: "08/10/2024",
-    soLuongHocVien: 0,
-    nguoiTao: {
-      taiKhoan: "guldiusgvils",
-      hoTen: "guldiusgvils",
-      maLoaiNguoiDung: "GV",
-      tenLoaiNguoiDung: "Giáo vụ",
-    },
-    danhMucKhoaHoc: {
-      maDanhMucKhoahoc: "FrontEnd",
-      tenDanhMucKhoaHoc: "Lập trình Front end",
-    },
-  },
-  {
-    maKhoaHoc: "",
-    biDanh: "javascriptt",
-    tenKhoaHoc: "Javascriptt",
-    moTa: "rất hay",
-    luotXem: 100,
-    hinhAnh:
-      "https://elearningnew.cybersoft.edu.vn/hinhanh/khoa-hoc-python-cho-nguoi-moi-bat-dau_gp01.png",
-    maNhom: "gp01",
-    ngayTao: "08/10/2024",
-    soLuongHocVien: 0,
-    nguoiTao: {
-      taiKhoan: "guldiusgvils",
-      hoTen: "guldiusgvils",
-      maLoaiNguoiDung: "GV",
-      tenLoaiNguoiDung: "Giáo vụ",
-    },
-    danhMucKhoaHoc: {
-      maDanhMucKhoahoc: "FrontEnd",
-      tenDanhMucKhoaHoc: "Lập trình Front end",
-    },
-  },
-  {
-    maKhoaHoc: "",
-    biDanh: "javascriptt",
-    tenKhoaHoc: "Javascriptt",
-    moTa: "rất hay",
-    luotXem: 100,
-    hinhAnh:
-      "https://elearningnew.cybersoft.edu.vn/hinhanh/khoa-hoc-python-cho-nguoi-moi-bat-dau_gp01.png",
-    maNhom: "gp01",
-    ngayTao: "08/10/2024",
-    soLuongHocVien: 0,
-    nguoiTao: {
-      taiKhoan: "guldiusgvils",
-      hoTen: "guldiusgvils",
-      maLoaiNguoiDung: "GV",
-      tenLoaiNguoiDung: "Giáo vụ",
-    },
-    danhMucKhoaHoc: {
-      maDanhMucKhoahoc: "FrontEnd",
-      tenDanhMucKhoaHoc: "Lập trình Front end",
-    },
-  },
-  {
-    maKhoaHoc: "",
-    biDanh: "javascriptt",
-    tenKhoaHoc: "Javascriptt",
-    moTa: "rất hay",
-    luotXem: 100,
-    hinhAnh:
-      "https://elearningnew.cybersoft.edu.vn/hinhanh/khoa-hoc-python-cho-nguoi-moi-bat-dau_gp01.png",
-    maNhom: "gp01",
-    ngayTao: "08/10/2024",
-    soLuongHocVien: 0,
-    nguoiTao: {
-      taiKhoan: "guldiusgvils",
-      hoTen: "guldiusgvils",
-      maLoaiNguoiDung: "GV",
-      tenLoaiNguoiDung: "Giáo vụ",
-    },
-    danhMucKhoaHoc: {
-      maDanhMucKhoahoc: "FrontEnd",
-      tenDanhMucKhoaHoc: "Lập trình Front end",
-    },
-  },
-]);
+import { useCategoryStore } from "../store/categoryStore";
+
+const categoryStore = useCategoryStore();
+const data = ref([]);
+
+onMounted(async () => {
+  data.value = categoryStore.listCourse.slice(4, 8);
+});
 </script>
 
 

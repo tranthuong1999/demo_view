@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { apiGetListCategory, apiFetchListAllCourse } from "../apis/category.api"
 
-export const usePostStore = defineStore('postStore', {
+export const useCategoryStore = defineStore('postStore', {
     state: () => ({
         category: [],
         listCourse: [],

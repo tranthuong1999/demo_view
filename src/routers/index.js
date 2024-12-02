@@ -16,10 +16,7 @@ import CoursePopularPage from "../views/CoursePopularPage.vue";
 import CourseReferencePage from "../views/CourseReferencePage.vue";
 import CourseFontEndPage from "../views/CourseFontEndPage.vue";
 import MenuPageCheck from "../views/MenuPageCheck.vue";
-
-
-
-
+import { useCategoryStore } from "../store/categoryStore"
 
 const home_page = {
     default: HomePage,
@@ -32,19 +29,25 @@ const home_page = {
     course_popular: CoursePopularPage,
     course_reference: CourseReferencePage,
     course_font_end: CourseFontEndPage,
-
 }
+const fetchCategoryData = async () => {
+    const categoryStore = useCategoryStore();
+    await categoryStore.fetchListCourse();
+    await categoryStore.fetchListCategory();
+};
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
         {
             path: '/',
-            components: home_page
+            components: home_page,
+            beforeEnter: fetchCategoryData
         },
         {
             path: '/trangchu',
-            component: home_page,
+            components: home_page,
+            beforeEnter: fetchCategoryData
         },
         {
             path: '/thongtin',
