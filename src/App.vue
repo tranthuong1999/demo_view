@@ -12,6 +12,7 @@
     <RouterView name="course" />
     <RouterView name="event" />
     <RouterView name="category" />
+    <RouterView name="infor" />
     <RouterView name="footer" />
   </div>
 </template>

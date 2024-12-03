@@ -52,7 +52,11 @@ const router = createRouter({
         },
         {
             path: '/thongtin',
-            component: InforPage
+            components: {
+                nav_bar: HomePage,
+                infor: InforPage,
+                footer: FooterPage,
+            }
         },
         {
             path: '/khoahoc',
