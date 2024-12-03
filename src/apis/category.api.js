@@ -37,21 +37,22 @@ export const apiGetListCourseByPage = async (page) => {
 }
 
 // export const apiFetchCourseByCategory = async (category: string) => {
-//     try {
-//         const response = await fetch(`${BASE_URL}/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc?maDanhMuc=${category}&MaNhom=GP01`, {
-//             method: "GET",
-//             headers: {
-//                 "Tokencybersoft": `${token}`,
-//                 "Content-Type": "application/json"
-//             }
-//         });
-//         const data: any = await response.json();
-//         return data;
-//     }
-//     catch (error) {
-//         console.log("apiGetistCategory", error)
-//     }
-// }
+export const apiFetchCourseByCategory = async (category) => {
+    try {
+        const response = await fetch(`${BASE_URL}/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc?maDanhMuc=${category}&MaNhom=GP01`, {
+            method: "GET",
+            headers: {
+                "Tokencybersoft": `${token}`,
+                "Content-Type": "application/json"
+            }
+        });
+        const data = await response.json();
+        return data;
+    }
+    catch (error) {
+        console.log("apiGetistCategory", error)
+    }
+}
 
 export const apiFetchListAllCourse = async () => {
     try {

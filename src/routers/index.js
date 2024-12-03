@@ -71,12 +71,20 @@ const router = createRouter({
             }
         },
         {
-            path: '/sukien/:name',
-            component: EventPage
+            path: '/sukien/:name?',
+            components: {
+                nav_bar: HomePage,
+                event: EventPage,
+                footer: FooterPage,
+            }
         },
         {
             path: '/danhmuckhoahoc/:name',
-            component: CategoryPage
+            components: {
+                nav_bar: HomePage,
+                category: CategoryPage,
+                footer: FooterPage,
+            }
         },
         {
             path: '/responsive',

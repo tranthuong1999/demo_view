@@ -101,6 +101,7 @@ defineProps(["data"]);
       color: #fff;
       color: var(--colorWhite);
       background-color: var(--colorGlobal);
+      max-height: 30px;
     }
     .title {
       padding: 12px;

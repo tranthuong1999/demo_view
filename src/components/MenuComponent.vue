@@ -15,7 +15,7 @@
       <v-list
         v-if="data && data.length > 0"
         class="content_menu"
-        :class="{ content_menu_mobile: isMobile}"
+        :class="{ content_menu_mobile: isMobile }"
       >
         <v-list-item v-for="(item, index) in data" :key="index">
           <div class="custom-title" @click="handleCategoryRouter(item.path)">

@@ -10,6 +10,8 @@
     <RouterView name="mentor" />
     <RouterView name="blog" />
     <RouterView name="course" />
+    <RouterView name="event" />
+    <RouterView name="category" />
     <RouterView name="footer" />
   </div>
 </template>

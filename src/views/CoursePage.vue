@@ -63,7 +63,9 @@ watch(page, fetchDataByPage);
         <i class="material-icons" :class="'icon_label'"> label </i>
         <p class="title">Danh sách khóa học</p>
       </div>
-      <div v-if="loading" class="loading-spinner">Loading...</div>
+      <div v-if="loading" class="loading-spinner">
+        <v-progress-circular indeterminate :size="40"></v-progress-circular>
+      </div>
       <div v-else class="list_course">
         <CoursePopularComponent :data="data_course" />
       </div>
@@ -72,7 +74,7 @@ watch(page, fetchDataByPage);
           <v-pagination
             v-model="page"
             :length="totalPage"
-            content-class="custom-pagination"
+            theme="check_pagination"
           ></v-pagination>
         </div>
       </div>
@@ -158,6 +160,12 @@ watch(page, fetchDataByPage);
         font-size: 20px;
         font-weight: bold;
       }
+    }
+    .loading-spinner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 30px;
     }
     .list_course {
       padding-top: 30px;
