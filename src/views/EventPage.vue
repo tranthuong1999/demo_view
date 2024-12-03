@@ -320,11 +320,11 @@ const data_sponsor = [
       padding-top: 20px;
       padding-bottom: 50px;
 
-      &.list_sponsor-mobile {
+      &.list_sponsor_mobile {
         grid-template-columns: repeat(1, 1fr);
       }
 
-      &.list_sponsor-tabnet {
+      &.list_sponsor_tabnet {
         grid-template-columns: repeat(2, 1fr);
       }
 
