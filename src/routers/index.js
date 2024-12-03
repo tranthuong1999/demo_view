@@ -16,6 +16,7 @@ import CoursePopularPage from "../views/CoursePopularPage.vue";
 import CourseReferencePage from "../views/CourseReferencePage.vue";
 import CourseFontEndPage from "../views/CourseFontEndPage.vue";
 import MenuPageCheck from "../views/MenuPageCheck.vue";
+import DetailCoursePage from "../views/DetailCoursePage.vue";
 import { useCategoryStore } from "../store/categoryStore"
 
 const home_page = {
@@ -89,6 +90,15 @@ const router = createRouter({
                 category: CategoryPage,
                 footer: FooterPage,
             }
+        },
+        {
+            path: '/chitiet/:course_code',
+            components: {
+                nav_bar: HomePage,
+                detail_course: DetailCoursePage,
+                footer: FooterPage,
+            },
+            beforeEnter: fetchCategoryData
         },
         {
             path: '/responsive',

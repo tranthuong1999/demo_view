@@ -2,8 +2,13 @@
 <script setup>
 import { defineProps } from "vue";
 import { isMobile, isTablet } from "../Composables/useScreenBreakpoints";
-
+import { useRouter } from "vue-router";
+const router = useRouter();
 defineProps(["data"]);
+
+const handleDetailCourse = (maKhoaHoc) => {
+  router.push({ path: `/chitiet/${maKhoaHoc}` });
+};
 </script>
 
 <template>
@@ -15,7 +20,12 @@ defineProps(["data"]);
         list_reference_mobile: isMobile,
       }"
     >
-      <div v-for="(item, index) in data" :key="index" class="item_reference">
+      <div
+        v-for="(item, index) in data"
+        :key="index"
+        class="item_reference"
+        @click="handleDetailCourse(item.maKhoaHoc)"
+      >
         <div class="image">
           <img :src="item.hinhAnh" alt="" />
         </div>
@@ -110,7 +120,12 @@ defineProps(["data"]);
             </div>
 
             <div class="btn">
-              <button class="btn_detail">Xem chi tiết</button>
+              <button
+                class="btn_detail"
+                @click="handleDetailCourse(item.maKhoaHoc)"
+              >
+                Xem chi tiết
+              </button>
             </div>
           </div>
         </v-tooltip>
