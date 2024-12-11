@@ -28,6 +28,7 @@ const home_page = {
     slogan: SloganPage,
     course_desc: CourseDescriptionPage,
     footer: FooterPage,
+
     counter: CounterPage,
     mentor: MentorPage,
     course_popular: CoursePopularPage,
