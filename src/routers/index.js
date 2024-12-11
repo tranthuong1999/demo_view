@@ -18,6 +18,7 @@ import CourseFontEndPage from "../views/CourseFontEndPage.vue";
 import MenuPageCheck from "../views/MenuPageCheck.vue";
 import DetailCoursePage from "../views/DetailCoursePage.vue";
 import LoginPage from "../views/LoginPage.vue";
+import UserInfor from "../views/UserInforPage.vue";
 
 import { useCategoryStore } from "../store/categoryStore"
 
@@ -64,6 +65,14 @@ const router = createRouter({
             components: {
                 nav_bar: HomePage,
                 infor: InforPage,
+                footer: FooterPage,
+            }
+        },
+        {
+            path: '/thongtincanhan',
+            components: {
+                nav_bar: HomePage,
+                user_infor: UserInfor,
                 footer: FooterPage,
             }
         },

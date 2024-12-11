@@ -207,7 +207,7 @@ const onRegisterSubmit = handleRegisterSubmit(async (values) => {
       </div>
     </div>
   </div>
-  <DialogComponent v-if="modalLogin">
+  <DialogComponent v-if="modalLogin && !authStore.isLogin">
     <template #header>
       <i class="material-icons" :class="'icon_login'">error</i>
     </template>
@@ -227,7 +227,7 @@ const onRegisterSubmit = handleRegisterSubmit(async (values) => {
       <h2>Đăng ký thành công</h2>
     </template>
   </DialogComponent>
-  <DialogComponent v-else>
+  <DialogComponent v-if="modalRegister && !authStore.isRegister">
     <template #header>
       <i class="material-icons" :class="'icon_register_faile'">error</i>
     </template>
@@ -249,7 +249,8 @@ const onRegisterSubmit = handleRegisterSubmit(async (values) => {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  overflow: hidden;
+  // overflow: hidden;
+  overflow-y: hidden;
   .contain_log_in {
     width: 90vw;
     height: 80vh;

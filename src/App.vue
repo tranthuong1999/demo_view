@@ -15,6 +15,7 @@
     <RouterView name="infor" />
     <RouterView name="detail_course" />
     <RouterView name="login" />
+    <RouterView name="user_infor" />
     <RouterView name="footer" />
   </div>
 </template>

@@ -6,6 +6,7 @@ import { isMobile } from "../Composables/useScreenBreakpoints";
 const isFocus = ref(false);
 const isMenuMobile = ref(false);
 const router = useRouter();
+const isIconLogout = ref(false);
 
 const data_category = ref([
   { path: "danhmuckhoahoc/BackEnd", title: "Lập trình backend" },
@@ -20,13 +21,21 @@ const data_event = ref([
   { path: "sukien/Noel", title: "Sự kiện giáng sinh" },
   { path: "sukien/Noel", title: "Sự kiện Noel" },
 ]);
+const user_info = ref(JSON.parse(localStorage.getItem("credential")));
 
 const handleLogin = () => {
   router.push({ path: "/login" });
 };
 
+const handleInforUser = () => {
+  router.push({ path: "/thongtincanhan" });
+};
 
-
+const handleLogout = () => {
+  localStorage.clear();
+  user_info.value = null;
+  router.push({ path: "/" });
+};
 </script>
 <template>
   <div class="nav_bar">
@@ -55,7 +64,33 @@ const handleLogin = () => {
     </div>
 
     <div class="block_3">
-      <button class="btn-login" @click="handleLogin">Đăng nhập</button>
+      <button
+        class="btn-login"
+        @click="handleLogin"
+        v-if="!user_info?.accessToken"
+      >
+        Đăng nhập
+      </button>
+      <div
+        class="btn-logout"
+        v-else
+        @mouseenter="isIconLogout = true"
+        @mouseleave="isIconLogout = false"
+        @click="handleInforUser"
+      >
+        <v-avatar
+          icon="$vuetify"
+          image="https://cdn.dribbble.com/users/2364329/screenshots/6676961/02.jpg?compress=1&resize=800x600"
+          size="62"
+        ></v-avatar>
+      </div>
+      <div
+        class="icon_logout"
+        @click="handleLogout"
+        v-if="user_info?.accessToken"
+      >
+        <i class="material-icons" :style="{ color: '#f5c002' }">logout</i>
+      </div>
       <i
         @click="isMenuMobile = !isMenuMobile"
         v-if="isMobile"
@@ -75,9 +110,6 @@ const handleLogin = () => {
         <MenuComponent title="Blog" path="blog" />
         <MenuComponent title="Sự kiện" :data="data_event" path="sukien" />
         <MenuComponent title="Thông tin" path="thongtin" />
-        <div>
-          <button class="btn_log_out">Đăng xuất</button>
-        </div>
       </div>
     </div>
   </div>
@@ -141,6 +173,17 @@ const handleLogin = () => {
       font-size: 15px;
       border-radius: 8px;
       color: var(--colorWhite);
+    }
+    .btn-logout {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .icon_logout {
+      padding-top: 25px;
+      &:hover {
+        cursor: pointer;
+      }
     }
     .icon_drop_down {
       color: black;
