@@ -14,7 +14,7 @@ import breakpointsPlugin from "./plugins/breakpoints";
 import CoursePopularComponent from "./components/CoursePopularComponent.vue";
 import CourseReferenceComponent from "./components/CouseReferenceComponent.vue";
 import DialogComponent from "./components/DialogComponent.vue";
-
+import OverPlayComponent from "./components/OverPlayComponent.vue";
 const vuetify = createVuetify({
     components,
     directives,
@@ -23,7 +23,6 @@ const vuetify = createVuetify({
     },
 })
 const pinia = createPinia();
-
 const app = createApp(App);
 app.use(router)
 app.use(vuetify);
@@ -33,5 +32,6 @@ app.component('MenuComponent', MenuComponent);
 app.component('CoursePopularComponent', CoursePopularComponent);
 app.component('CourseReferenceComponent', CourseReferenceComponent);
 app.component('DialogComponent', DialogComponent);
+app.component('OverPlayComponent', OverPlayComponent);
 
 app.mount('#app')

@@ -60,10 +60,11 @@ const onSubmit = handleSubmit(async (values) => {
   await authStore.fetchLogin(dataLogin);
   modalLogin.value = true;
   if (authStore.isLogin) {
-    router.push({ path: "/" });
+    setTimeout(() => {
+      router.push({ path: "/" });
+    }, 3000);
   }
 });
-
 const onRegisterSubmit = handleRegisterSubmit(async (values) => {
   const { phone, email, accRegister, passReg, name } = values;
   const dataRegister = {
@@ -84,6 +85,13 @@ const onRegisterSubmit = handleRegisterSubmit(async (values) => {
 
 <template>
   <div class="page_login">
+    <div v-if="modalLogin && authStore.isLogin" class="loader">
+      <v-progress-circular
+        :size="50"
+        color="primary"
+        indeterminate
+      ></v-progress-circular>
+    </div>
     <!-- block -1 -->
     <div class="contain_log_in">
       <div class="item_left" v-if="isScreenLogin">
@@ -221,7 +229,7 @@ const onRegisterSubmit = handleRegisterSubmit(async (values) => {
       <div>Đã xảy ra lỗi vui lòng quay lại trang chủ hoặc thử lại</div>
     </template>
   </DialogComponent>
-
+  <OverPlayComponent v-if="modalLogin && authStore.isLogin" />
   <DialogComponent v-if="modalRegister && authStore.isRegister">
     <template #header>
       <i class="material-icons" :class="'icon_register_succ'">check</i>
@@ -254,6 +262,9 @@ const onRegisterSubmit = handleRegisterSubmit(async (values) => {
   height: 100vh;
   // overflow: hidden;
   overflow-y: hidden;
+  .loader {
+    position: absolute;
+  }
   .contain_log_in {
     width: 90vw;
     height: 80vh;
