@@ -28,8 +28,10 @@ export const apiRegister = async (data) => {
             headers: headers,
             body: JSON.stringify(data),
         });
-        const result = await response.json();
-        return result;
+        if (response.status === 200) {
+            return { success: true };
+        }
+        return { success: false }
     }
     catch (error) {
         return error;

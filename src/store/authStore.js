@@ -12,7 +12,8 @@ export const useAuthStore = defineStore('authStore', {
         async fetchRegister(data) {
             try {
                 const response = await apiRegister(data);
-                if (response) {
+                console.log("response fetchRegister", response)
+                if (response.success) {
                     this.isRegister = true;
                 }
                 else {
@@ -26,7 +27,6 @@ export const useAuthStore = defineStore('authStore', {
         async fetchLogin(data) {
             try {
                 const response = await apiLogin(data);
-                console.log("response fetchLogin", response)
                 if (response.accessToken) {
                     this.isLogin = true;
                     this.inforUser = response;

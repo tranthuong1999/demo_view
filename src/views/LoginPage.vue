@@ -16,6 +16,7 @@ const {
   errors: errorRegister,
   handleSubmit: handleRegisterSubmit,
   defineField: defineRegisterField,
+  resetForm,
 } = useForm({
   validationSchema: yup.object({
     accRegister: yup.string().required("Tài khoản không được để trống"),
@@ -75,7 +76,9 @@ const onRegisterSubmit = handleRegisterSubmit(async (values) => {
   };
   await authStore.fetchRegister(dataRegister);
   modalRegister.value = true;
-  // console.log("checking register", authStore.isRegister);
+  if (authStore.isRegister) {
+    resetForm();
+  }
 });
 </script>
 
