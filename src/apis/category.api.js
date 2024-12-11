@@ -71,9 +71,8 @@ export const apiFetchListAllCourse = async () => {
 //         const response = await fetch(`${BASE_URL}/QuanLyKhoaHoc/HuyGhiDanh`, {
 //             method: "POST",
 //             headers: {
-//                 "Content-Type": "application/json",
-//                 "Authorization": `Bearer ${_token}`,
-//                 "Tokencybersoft": `${token}`,
+//                   ...headers,
+// "Authorization": `Bearer ${_token}`,
 //             },
 //             body: JSON.stringify({ maKhoaHoc, taiKhoan })
 //         });
@@ -105,9 +104,9 @@ export const apiRegisterCourse = async (maKhoaHoc, taiKhoan) => {
     const response = await fetch(`${BASE_URL}/QuanLyKhoaHoc/DangKyKhoaHoc`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
+            ...headers,
             "Authorization": `Bearer ${_token}`,
-            "Tokencybersoft": `${token}`,
+
         },
         body: JSON.stringify({ maKhoaHoc, taiKhoan })
     });
