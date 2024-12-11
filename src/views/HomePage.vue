@@ -87,7 +87,7 @@ const handleLogout = () => {
       <div
         class="icon_logout"
         @click="handleLogout"
-        v-if="user_info?.accessToken"
+        v-if="user_info?.accessToken && !isMobile"
       >
         <i class="material-icons" :style="{ color: '#f5c002' }">logout</i>
       </div>

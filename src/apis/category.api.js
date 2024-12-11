@@ -100,21 +100,19 @@ export const apiDetailCourse = async (maKhoaHoc) => {
 }
 
 // export const apiRegisterCourse = async (maKhoaHoc: string, taiKhoan: string) => {
-//     const _token = JSON.parse(localStorage.getItem("credential")!).accessToken
-//     try {
-//         const response = await fetch(`${BASE_URL}/QuanLyKhoaHoc/DangKyKhoaHoc`, {
-//             method: "POST",
-//             headers: {
-//                 "Content-Type": "application/json",
-//                 "Authorization": `Bearer ${_token}`,
-//                 "Tokencybersoft": `${token}`,
-//             },
-//             body: JSON.stringify({ maKhoaHoc, taiKhoan })
-//         });
-//         const result: any = await response.json();
-//         return result;
-//     }
-//     catch (error) {
-//         console.log("apiRegisterCourse", error)
-//     }
-// }
+export const apiRegisterCourse = async (maKhoaHoc, taiKhoan) => {
+    const _token = JSON.parse(localStorage.getItem("credential")).accessToken
+    const response = await fetch(`${BASE_URL}/QuanLyKhoaHoc/DangKyKhoaHoc`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${_token}`,
+            "Tokencybersoft": `${token}`,
+        },
+        body: JSON.stringify({ maKhoaHoc, taiKhoan })
+    });
+    if (response.status === 200) {
+        return { success: true };
+    }
+    return { success: false }
+}

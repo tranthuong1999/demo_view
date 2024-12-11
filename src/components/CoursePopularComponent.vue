@@ -1,7 +1,13 @@
 <script setup>
 import { defineProps } from "vue";
 import { isMobile, isTablet } from "../Composables/useScreenBreakpoints";
+import { useRouter } from "vue-router";
 defineProps(["data"]);
+const router = useRouter();
+
+const handleCoursePopular = (course) => {
+  router.push(`/chitiet/${course.maKhoaHoc}`);
+};
 </script>
 
 <template>
@@ -16,6 +22,7 @@ defineProps(["data"]);
       v-for="(course, index) in data"
       :key="index"
       class="course_popular_page"
+      @click="handleCoursePopular(course)"
     >
       <div class="image">
         <img :src="course.hinhAnh" alt="" />

@@ -1,15 +1,18 @@
 <script setup>
 import { isMobile, isTablet } from "../Composables/useScreenBreakpoints";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { ref, onMounted } from "vue";
 import { useCategoryStore } from "../store/categoryStore";
 import { watch } from "vue";
 
 const router = useRoute();
+const nav = useRouter();
 const loading = ref(false);
 const course_code = ref(router.params.course_code);
 const categoryStore = useCategoryStore();
+const user_info = ref(JSON.parse(localStorage.getItem("credential")));
 const data = ref([]);
+const isRegisterCourse = ref(false);
 
 const data_lesson = [
   {
@@ -82,6 +85,19 @@ watch(
 onMounted(async () => {
   data.value = categoryStore.listCourse.slice(4, 8);
 });
+
+const handleRegisterCourse = async () => {
+  if (!user_info.value) {
+    nav.push({ path: "/login" });
+    return;
+  }
+  await categoryStore.fetchRegisterCourse(
+    course_code.value,
+    user_info.value.taiKhoan
+  );
+  isRegisterCourse.value = true;
+  // console.log("checking reg", categoryStore.isRegisterCourse);
+};
 </script>
 
 
@@ -245,7 +261,9 @@ onMounted(async () => {
           <i class="material-icons">star</i> 500.000<sup>đ</sup>
         </p>
         <div class="button">
-          <button class="btn-register">Đăng ký</button>
+          <button class="btn-register" @click="handleRegisterCourse">
+            Đăng ký
+          </button>
         </div>
         <div class="detail">
           <p>Ghi danh: <span>10 học viên </span></p>
@@ -278,9 +296,37 @@ onMounted(async () => {
       <CourseReferenceComponent :data="data" />
     </div>
   </div>
+
+  <DialogComponent v-if="isRegisterCourse && !categoryStore.isRegisterCourse">
+    <template #header>
+      <i class="material-icons" :class="'icon_register_faile'">error</i>
+    </template>
+    <template #body>
+      <h2>Đã đăng ký khoá học này rồi</h2>
+    </template>
+    <template #footer>
+      <div>Đã xảy ra lỗi vui lòng quay lại trang chủ hoặc thử lại</div>
+    </template>
+  </DialogComponent>
+  <DialogComponent v-if="isRegisterCourse && categoryStore.isRegisterCourse">
+    <template #header>
+      <i class="material-icons" :class="'icon_register_succ'">check</i>
+    </template>
+    <template #body>
+      <h2>Đăng ký thành công</h2>
+    </template>
+  </DialogComponent>
 </template>
 
 .<style scoped lang="scss">
+.icon_register_succ {
+  font-size: 70px !important;
+  color: green !important;
+}
+.icon_register_faile {
+  font-size: 70px !important;
+  color: #f0ad4e !important;
+}
 .detail-course-child-page {
   padding-top: 96px;
   .block-1 {
