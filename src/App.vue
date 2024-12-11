@@ -1,29 +1,29 @@
 <template>
   <div>
-    <h1>Named Views</h1>
-    <TodoList />
-    <!-- <ul>
-      <li>
-        <router-link to="/">First page</router-link>
-      </li>
-      <li>
-        <router-link to="/other">Second page</router-link>
-      </li>
-    </ul>
-    <router-view class="view one"></router-view>
-    <router-view class="view two" name="a"></router-view>
-    <router-view class="view three" name="b"></router-view> -->
+    <RouterView name="nav_bar" />
+    <RouterView name="slogan" />
+    <RouterView name="course_desc" />
+    <RouterView name="course_popular" />
+    <RouterView name="course_reference" />
+    <RouterView name="course_font_end" />
+    <RouterView name="counter" />
+    <RouterView name="mentor" />
+    <RouterView name="blog" />
+    <RouterView name="course" />
+    <RouterView name="event" />
+    <RouterView name="category" />
+    <RouterView name="infor" />
+    <RouterView name="detail_course" />
+    <RouterView name="login" />
+    <RouterView name="user_infor" />
+    <RouterView name="footer" />
   </div>
 </template>
 
 <script>
-// import HelloWorld from "./components/HelloWorld.vue";
-
 export default {
   name: "App",
-  components: {
-    // HelloWorld,
-  },
+  components: {},
 };
 </script>
 
