@@ -13,7 +13,7 @@ import MenuComponent from "./components/MenuComponent.vue";
 import breakpointsPlugin from "./plugins/breakpoints";
 import CoursePopularComponent from "./components/CoursePopularComponent.vue";
 import CourseReferenceComponent from "./components/CouseReferenceComponent.vue";
-
+import DialogComponent from "./components/DialogComponent.vue";
 
 const vuetify = createVuetify({
     components,
@@ -32,8 +32,6 @@ app.use(breakpointsPlugin);
 app.component('MenuComponent', MenuComponent);
 app.component('CoursePopularComponent', CoursePopularComponent);
 app.component('CourseReferenceComponent', CourseReferenceComponent);
-
-
-
+app.component('DialogComponent', DialogComponent);
 
 app.mount('#app')

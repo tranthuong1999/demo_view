@@ -1,9 +1,11 @@
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { isMobile } from "../Composables/useScreenBreakpoints";
 
 const isFocus = ref(false);
 const isMenuMobile = ref(false);
+const router = useRouter();
 
 const data_category = ref([
   { path: "danhmuckhoahoc/BackEnd", title: "Lập trình backend" },
@@ -18,6 +20,13 @@ const data_event = ref([
   { path: "sukien/Noel", title: "Sự kiện giáng sinh" },
   { path: "sukien/Noel", title: "Sự kiện Noel" },
 ]);
+
+const handleLogin = () => {
+  router.push({ path: "/login" });
+};
+
+
+
 </script>
 <template>
   <div class="nav_bar">
@@ -46,7 +55,7 @@ const data_event = ref([
     </div>
 
     <div class="block_3">
-      <button class="btn-login">Đăng nhập</button>
+      <button class="btn-login" @click="handleLogin">Đăng nhập</button>
       <i
         @click="isMenuMobile = !isMenuMobile"
         v-if="isMobile"

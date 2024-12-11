@@ -17,6 +17,8 @@ import CourseReferencePage from "../views/CourseReferencePage.vue";
 import CourseFontEndPage from "../views/CourseFontEndPage.vue";
 import MenuPageCheck from "../views/MenuPageCheck.vue";
 import DetailCoursePage from "../views/DetailCoursePage.vue";
+import LoginPage from "../views/LoginPage.vue";
+
 import { useCategoryStore } from "../store/categoryStore"
 
 const home_page = {
@@ -45,6 +47,12 @@ const router = createRouter({
             path: '/',
             components: home_page,
             beforeEnter: fetchCategoryData
+        },
+        {
+            path: '/login',
+            components: {
+                login: LoginPage
+            },
         },
         {
             path: '/trangchu',
@@ -103,10 +111,6 @@ const router = createRouter({
         {
             path: '/responsive',
             component: ResponsivePage
-        },
-        {
-            path: '/footer',
-            component: FooterPage
         },
         {
             path: '/:pathMatch(.*)*',
