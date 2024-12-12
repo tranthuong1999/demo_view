@@ -90,6 +90,9 @@ const handleLogout = () => {
         v-if="user_info?.accessToken && !isMobile"
       >
         <i class="material-icons" :style="{ color: '#f5c002' }">logout</i>
+        <v-tooltip activator="parent" location="bottom" open-on-focus="true">
+          Logout
+        </v-tooltip>
       </div>
       <i
         @click="isMenuMobile = !isMenuMobile"
