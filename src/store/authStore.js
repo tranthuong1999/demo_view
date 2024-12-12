@@ -1,12 +1,13 @@
 import { defineStore } from 'pinia';
-import { apiRegister, apiLogin } from "../apis/authentication.api"
+import { apiRegister, apiLogin, apiFetchAccountInfor } from "../apis/authentication.api"
 
 export const useAuthStore = defineStore('authStore', {
     state: () => ({
         isLogin: false,
         isRegister: false,
         isLoading: false,
-        inforUser: {}
+        inforUser: {},
+        inforAccount: {}
     }),
     actions: {
         async fetchRegister(data) {
@@ -33,6 +34,17 @@ export const useAuthStore = defineStore('authStore', {
                 } else {
                     this.isLogin = false;
                 }
+            } catch (err) {
+                this.error = 'Failed to fetchListCourse';
+                console.error(err);
+                this.isLogin = false;
+            }
+        },
+        async fetchUserInfor(taiKhoan) {
+            try {
+                const response = await apiFetchAccountInfor(taiKhoan);
+                console.log("fetchUserInfor", response)
+                this.inforAccount = response;
             } catch (err) {
                 this.error = 'Failed to fetchListCourse';
                 console.error(err);

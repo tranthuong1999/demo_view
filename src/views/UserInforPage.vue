@@ -1,12 +1,26 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { isMobile } from "../Composables/useScreenBreakpoints";
+import { useAuthStore } from "../store/authStore";
+import { useRouter } from "vue-router";
 
-const isShowInfor = ref(true);
+const isShowInfor = ref(false);
 const power_1 = 100;
 const power_2 = 80;
 const power_3 = 60;
 const power_4 = 40;
+
+const authStore = useAuthStore();
+const userInfor = JSON.parse(localStorage.getItem("credential"));
+const router = useRouter();
+
+onMounted(() => {
+  if (!userInfor) {
+    router.push({ path: "/" });
+    return;
+  }
+  authStore.fetchUserInfor(userInfor.taiKhoan);
+});
 </script>
 
 
@@ -182,7 +196,39 @@ const power_4 = 40;
             </div>
           </div>
         </div>
-        <div class="show_course" v-else>Show course</div>
+        <div class="show_course" v-else>
+          <div class="course_top" v-if="!isMobile">
+            <h1>Khóa học của tôi</h1>
+            <div>
+              <input placeholder="Tìm kiếm" class="input_search" />
+            </div>
+          </div>
+          <div
+            v-for="(course, index) in authStore.inforAccount
+              .chiTietKhoaHocGhiDanh"
+            :key="index"
+            class="course_bottom"
+          >
+            <div class="course" :class="{ course_mobile: isMobile }">
+              <div class="course_left">
+                <img :src="course.hinhAnh" alt="" />
+              </div>
+
+              <div class="course_right">
+                <h4 class="course_right_title">Javascripttasd</h4>
+                <p class="course_right_desc">
+                  ES6 là một chuẩn Javascript mới được đưa ra vào năm 2015 với
+                  nhiều quy tắc và cách sử dụng khác nhau...
+                </p>
+              </div>
+              <div class="course_footer">
+                <div>
+                  <button>Huỷ khoá học</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -202,6 +248,7 @@ const power_4 = 40;
     flex: 1;
     gap: 20px;
     padding: 0 50px;
+    padding-bottom: 50px;
     .item_left {
       flex: 1;
       display: flex;
@@ -337,7 +384,7 @@ const power_4 = 40;
               grid-template-columns: repeat(2, 1fr);
               width: 50%;
               gap: 12px;
-              &_mobile{
+              &_mobile {
                 width: auto;
               }
               .item_bottom_right {
@@ -360,6 +407,83 @@ const power_4 = 40;
                 }
               }
             }
+          }
+        }
+      }
+    }
+  }
+  .show_course {
+    .course_top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      h1 {
+        padding-bottom: 12px;
+      }
+      .title_course {
+        text-transform: uppercase;
+        font-size: 17px;
+        font-weight: bold;
+      }
+      .input_search {
+        outline: none;
+        border: none;
+        width: 100%;
+        height: 40px;
+        border-radius: 8px;
+        padding-left: 10px;
+        margin-left: 15px;
+        background-image: url(http://localhost:3002/img/icon_search.6d6000d2.png);
+        background-size: 30px;
+        background-position: 100%;
+        background-repeat: no-repeat;
+        background-color: #f5f5f5;
+        &:focus {
+          border: 2px solid var(--colorGlobal);
+          outline: none;
+        }
+      }
+    }
+    .course_bottom {
+      display: flex;
+      gap: 12px;
+      .course {
+        display: flex;
+        gap: 12px;
+        &_mobile {
+          flex-direction: column;
+        }
+        .course_left {
+          img {
+            object-fit: fill;
+            width: 100%;
+            height: 200px;
+            min-height: 200px;
+          }
+        }
+        .course_right {
+          &_title {
+            font-weight: bold;
+          }
+          &_desc {
+            color: var(--colorTextCard);
+            margin-bottom: 5px;
+            max-width: 640px;
+          }
+        }
+        .course_footer {
+          display: flex;
+          align-items: end;
+          button {
+            padding: 5px 10px;
+            background-color: #f6ba35;
+            border: none;
+            transition: all 0.5s;
+            text-transform: uppercase;
+            font-size: 15px;
+            color: #fff;
+            min-width: 150px;
+            border-radius: 4px;
           }
         }
       }
