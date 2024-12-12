@@ -3,6 +3,7 @@ import { onMounted, ref } from "vue";
 import { isMobile } from "../Composables/useScreenBreakpoints";
 import { useAuthStore } from "../store/authStore";
 import { useRouter } from "vue-router";
+// import { useCategoryStore } from "../store/categoryStore";
 
 const isShowInfor = ref(false);
 const power_1 = 100;
@@ -11,6 +12,7 @@ const power_3 = 60;
 const power_4 = 40;
 
 const authStore = useAuthStore();
+// const categoryStore = useCategoryStore();
 const userInfor = JSON.parse(localStorage.getItem("credential"));
 const router = useRouter();
 
@@ -21,6 +23,10 @@ onMounted(() => {
   }
   authStore.fetchUserInfor(userInfor.taiKhoan);
 });
+
+const handleDeleteCourse = async (course) => {
+  await authStore.fetchDeleteCourse(course.maKhoaHoc, userInfor.taiKhoan);
+};
 </script>
 
 
@@ -223,7 +229,9 @@ onMounted(() => {
               </div>
               <div class="course_footer">
                 <div>
-                  <button>Huỷ khoá học</button>
+                  <button @click="handleDeleteCourse(course)">
+                    Huỷ khoá học
+                  </button>
                 </div>
               </div>
             </div>

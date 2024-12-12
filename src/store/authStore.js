@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { apiRegister, apiLogin, apiFetchAccountInfor } from "../apis/authentication.api"
-
+import { apiDeleteCourse } from "../apis/category.api";
 export const useAuthStore = defineStore('authStore', {
     state: () => ({
         isLogin: false,
@@ -50,6 +50,21 @@ export const useAuthStore = defineStore('authStore', {
                 console.error(err);
                 this.isLogin = false;
             }
-        }
+        },
+        async fetchDeleteCourse(maKhoaHoc, taiKhoan) {
+            try {
+                const response = await apiDeleteCourse(maKhoaHoc, taiKhoan);
+                if (response.success) {
+                    this.inforAccount = {
+                        ...this.inforAccount,
+                        chiTietKhoaHocGhiDanh: this.inforAccount.chiTietKhoaHocGhiDanh.filter((item) => item.maKhoaHoc !== maKhoaHoc)
+                    }
+                }
+            } catch (err) {
+                this.error = 'Failed to fetchDetailCourse';
+                console.error(err);
+                this.isRegisterCourse = false;
+            }
+        },
     },
 });

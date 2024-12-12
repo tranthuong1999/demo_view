@@ -65,21 +65,18 @@ export const apiFetchListAllCourse = async () => {
 // export const apiDeleteCourse = async (maKhoaHoc: string, taiKhoan: string) => {
 export const apiDeleteCourse = async (maKhoaHoc, taiKhoan) => {
     const _token = JSON.parse(localStorage.getItem("credential")).accessToken
-    try {
-        const response = await fetch(`${BASE_URL}/QuanLyKhoaHoc/HuyGhiDanh`, {
-            method: "POST",
-            headers: {
-                ...headers,
-                "Authorization": `Bearer ${_token}`,
-            },
-            body: JSON.stringify({ maKhoaHoc, taiKhoan })
-        });
-        const result = await response.json();
-        return result;
+    const response = await fetch(`${BASE_URL}/QuanLyKhoaHoc/HuyGhiDanh`, {
+        method: "POST",
+        headers: {
+            ...headers,
+            "Authorization": `Bearer ${_token}`,
+        },
+        body: JSON.stringify({ maKhoaHoc, taiKhoan })
+    });
+    if (response.status === 200) {
+        return { success: true, data: response }
     }
-    catch (error) {
-        console.log("apiDeleteCourse", error)
-    }
+    return { success: false }
 }
 
 export const apiDetailCourse = async (maKhoaHoc) => {
