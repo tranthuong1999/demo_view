@@ -70,12 +70,13 @@ watch(page, fetchDataByPage);
         <CoursePopularComponent :data="data_course" />
       </div>
       <div class="block_pagination">
-        <div class="text-center">
+        <div class="check_pagination">
           <v-pagination
             v-model="page"
             :length="totalPage"
             theme="check_pagination"
-          ></v-pagination>
+          >
+          </v-pagination>
         </div>
       </div>
     </div>
