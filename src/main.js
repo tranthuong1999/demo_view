@@ -15,8 +15,6 @@ import CoursePopularComponent from "./components/CoursePopularComponent.vue";
 import CourseReferenceComponent from "./components/CouseReferenceComponent.vue";
 import DialogComponent from "./components/DialogComponent.vue";
 import OverPlayComponent from "./components/OverPlayComponent.vue";
-import CheckDialogPage from "./components/CheckDialogPage.vue";
-
 const vuetify = createVuetify({
     components,
     directives,
@@ -35,7 +33,5 @@ app.component('CoursePopularComponent', CoursePopularComponent);
 app.component('CourseReferenceComponent', CourseReferenceComponent);
 app.component('DialogComponent', DialogComponent);
 app.component('OverPlayComponent', OverPlayComponent);
-app.component('CheckDialogPage', CheckDialogPage);
-
 
 app.mount('#app')

@@ -1,12 +1,11 @@
 <script setup>
-import { defineProps, defineEmits, computed } from "vue";
+import { defineProps, computed } from "vue";
+
 const props = defineProps({
   isActive: Boolean,
 });
-const emit = defineEmits(["update:isActive"]);
-const dialogModel = computed({
-  get: () => props.isActive,
-  set: (value) => emit("update:isActive", value),
+const dialogModel = computed(() => {
+  return props.isActive;
 });
 </script>
 
