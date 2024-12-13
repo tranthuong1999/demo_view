@@ -62,7 +62,11 @@ const onSubmit = handleSubmit(async (values) => {
   if (authStore.isLogin) {
     setTimeout(() => {
       router.push({ path: "/" });
-    }, 3000);
+    }, 2000);
+  } else {
+    setTimeout(() => {
+      modalLogin.value = false;
+    }, 1000);
   }
 });
 const onRegisterSubmit = handleRegisterSubmit(async (values) => {
@@ -78,7 +82,14 @@ const onRegisterSubmit = handleRegisterSubmit(async (values) => {
   await authStore.fetchRegister(dataRegister);
   modalRegister.value = true;
   if (authStore.isRegister) {
-    resetForm();
+    setTimeout(() => {
+      modalRegister.value = false;
+      resetForm();
+    }, 1000);
+  } else {
+    setTimeout(() => {
+      modalRegister.value = false;
+    }, 1000);
   }
 });
 </script>
@@ -218,7 +229,10 @@ const onRegisterSubmit = handleRegisterSubmit(async (values) => {
       </div>
     </div>
   </div>
-  <DialogComponent v-if="modalLogin && !authStore.isLogin">
+  <DialogComponent
+    v-if="modalLogin && !authStore.isLogin"
+    :isActive="modalLogin"
+  >
     <template #header>
       <i class="material-icons" :class="'icon_login'">error</i>
     </template>
@@ -230,7 +244,10 @@ const onRegisterSubmit = handleRegisterSubmit(async (values) => {
     </template>
   </DialogComponent>
   <OverPlayComponent v-if="modalLogin && authStore.isLogin" />
-  <DialogComponent v-if="modalRegister && authStore.isRegister">
+  <DialogComponent
+    v-if="modalRegister && authStore.isRegister"
+    :isActive="modalRegister"
+  >
     <template #header>
       <i class="material-icons" :class="'icon_register_succ'">check</i>
     </template>
@@ -238,7 +255,11 @@ const onRegisterSubmit = handleRegisterSubmit(async (values) => {
       <h2>Đăng ký thành công</h2>
     </template>
   </DialogComponent>
-  <DialogComponent v-if="modalRegister && !authStore.isRegister">
+
+  <DialogComponent
+    v-if="modalRegister && !authStore.isRegister"
+    :isActive="modalRegister"
+  >
     <template #header>
       <i class="material-icons" :class="'icon_register_faile'">error</i>
     </template>
