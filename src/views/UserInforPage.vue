@@ -3,7 +3,6 @@ import { onMounted, ref } from "vue";
 import { isMobile } from "../Composables/useScreenBreakpoints";
 import { useAuthStore } from "../store/authStore";
 import { useRouter } from "vue-router";
-// import { useCategoryStore } from "../store/categoryStore";
 
 const isShowInfor = ref(false);
 const power_1 = 100;
@@ -12,7 +11,6 @@ const power_3 = 60;
 const power_4 = 40;
 
 const authStore = useAuthStore();
-// const categoryStore = useCategoryStore();
 const userInfor = JSON.parse(localStorage.getItem("credential"));
 const router = useRouter();
 
@@ -52,10 +50,20 @@ const handleDeleteCourse = async (course) => {
       </div>
       <div class="item_right">
         <div class="total_state">
-          <div class="btn_infor" @click="isShowInfor = true">
+          <div
+            class="btn_infor"
+            :class="{ btn_infor_active: isShowInfor }"
+            @click="isShowInfor = true"
+          >
             Thông tin cá nhân
           </div>
-          <div class="btn_course" @click="isShowInfor = false">Khoá học</div>
+          <div
+            class="btn_course"
+            :class="{ btn_course_active: !isShowInfor }"
+            @click="isShowInfor = false"
+          >
+            Khoá học
+          </div>
         </div>
         <div class="show_infor" v-if="isShowInfor">
           <div class="infor_top" :class="{ infor_top_mobile: isMobile }">
@@ -296,7 +304,27 @@ const handleDeleteCourse = async (course) => {
       flex: 3;
       .total_state {
         display: flex;
+        align-items: center;
         padding-top: 40px;
+        .btn_infor,
+        .btn_course {
+          background-color: var(--colorWhite);
+          color: var(--colorText);
+          border-top: 2px solid var(--colorGlobal);
+          padding: 16px;
+          cursor: pointer;
+        }
+        .btn_infor_active,
+        .btn_course_active {
+          cursor: pointer;
+          color: var(--colorWhite);
+          border: none;
+          border-top: 2px solid transparent;
+          background-color: var(--colorGlobal);
+          outline: none;
+          padding: 16px;
+          transition: all 0.3s;
+        }
       }
       .show_infor {
         display: flex;
@@ -454,10 +482,10 @@ const handleDeleteCourse = async (course) => {
     }
     .course_bottom {
       display: flex;
-      gap: 12px;
+      padding-bottom: 20px;
       .course {
         display: flex;
-        gap: 12px;
+        gap: 20px;
         &_mobile {
           flex-direction: column;
         }
@@ -467,6 +495,8 @@ const handleDeleteCourse = async (course) => {
             width: 100%;
             height: 200px;
             min-height: 200px;
+            min-width: 300px;
+            margin-right: 20px;
           }
         }
         .course_right {
